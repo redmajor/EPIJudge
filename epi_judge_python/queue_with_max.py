@@ -10,7 +10,6 @@ class QueueWithMax:
         self.maxq = deque()
 
     def enqueue(self, x):
-        # TODO - you fill in here.x
         self.q.append(x)
 
         while len(self.maxq) >= 1 and self.maxq[-1] < x:
@@ -21,14 +20,12 @@ class QueueWithMax:
         return
 
     def dequeue(self):
-        # TODO - you fill in here.
         if self.q[0] == self.maxq[0]:
             self.maxq.popleft()
 
         return self.q.popleft()
 
     def max(self):
-        # TODO - you fill in here.
         return self.maxq[0]
 
 
