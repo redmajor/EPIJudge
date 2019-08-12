@@ -22,13 +22,13 @@ done = {
     4: [],
     5: [7, 13],
     6: [],
-    7: [],
+    7: [4],
     8: [3, 9],
     9: [],
     10: [],
     11: [],
     12: [],
-    13: [],
+    13: [9???],
     14: [],
     15: [],
     16: [],
@@ -43,6 +43,8 @@ def random_question(questions_per_chapter, done):
         for question in range(1, max + 1):
             if question not in done[chapter]:
                 available_questions.append(str(chapter) + '.' + str(question))
+
+    print('not done: ', len(available_questions))
     return random.choice(available_questions)
 
 

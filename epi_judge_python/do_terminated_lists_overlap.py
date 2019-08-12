@@ -5,9 +5,37 @@ from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
+def length(ls):
+    sz = 0
+
+    while ls:
+        sz += 1
+        ls = ls.next
+    return sz
+
+
+def advance(ls, i):
+    for _ in range(i):
+        ls = ls.next
+    return ls
+
+
 def overlapping_no_cycle_lists(l0, l1):
     # TODO - you fill in here.
-    return None
+
+    len0 = length(l0)
+    len1 = length(l1)
+
+    if len0 > len1:
+        l0 = advance(l0, len0 - len1)
+    else:
+        l1 = advance(l1, len1 - len0)
+
+    while l0 and l1 and l0 is not l1:
+        l0 = l0.next
+        l1 = l1.next
+
+    return l0
 
 
 @enable_executor_hook
