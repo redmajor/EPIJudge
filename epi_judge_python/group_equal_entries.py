@@ -8,8 +8,29 @@ from test_framework.test_utils import enable_executor_hook
 Person = collections.namedtuple('Person', ('age', 'name'))
 
 
+# 22m20s
 def group_by_age(people):
     # TODO - you fill in here.
+
+    tbl = {}
+
+    for person in people:
+        if person.age not in tbl:
+            tbl[person.age] = 0
+        tbl[person.age] += 1
+
+    total = 0
+    for age, qty in tbl.items():
+        total += qty
+        tbl[age] = total - 1
+
+    for i in range(len(people)):
+        pos = tbl[people[i].age]
+        while pos > i:
+            tbl[people[i].age] -= 1
+            people[i], people[pos] = people[pos], people[i]
+            pos = tbl[people[i].age]
+
     return
 
 
